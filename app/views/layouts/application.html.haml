@@ -9,21 +9,14 @@
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
     %div
-      %ul#dropdown.dropdown-content
-        %li
-          %a{:href => "#"} Task
-        %li
-          %a{:href => "#"} Timer
-        %li
-          %a{:href => "#"} Mypage
       %nav
         .nav-wrapper.container
           %a.brand-logo.left{:href => "/"} Todo Application
           %ul.right
             %li
-              %a{:href => ""} Top
+              %a{:href => ""} Task
             %li
-              %a{:href => "#"} About
+              %a{:href => "#"} Timer
             %li
-              %a{:href => "#"} Contact
+              %a{:href => "#"} Mypage
     = yield
