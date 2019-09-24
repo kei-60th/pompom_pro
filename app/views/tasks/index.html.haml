@@ -1,11 +1,14 @@
 %div
   / 新規作成部分
-  .row
-    .col.s10.m11
-      %input.form-control{:placeholder => "Add your task!!"}/
-    .col.s2.m1
-      .btn-floating.waves-effect.waves-light.red
-        %i.material-icons add
+  = form_for [@task] do |f|
+    .row
+      .col.s10.m11
+        /%input.form-control{:placeholder => "Add your task!!"}/
+        = f.text_field :name, class: "form-control", placeholder: "Add your task!!"
+      .col.s2.m1
+        .btn-floating.waves-effect.waves-light.red
+          %button{:type => "submit",:class=>"btn-floating waves-effect waves-light red"}
+            %i.material-icons add
   / リスト表示部分
   %div
     %ul.collection
@@ -29,6 +32,5 @@
       %li#row_task_5.collection-item
         %input{:checked => "checked", :id => "'task_5", :type => "checkbox"}/
         %label.line-through{"v-bind:for" => "task_5"} Done Task
-
 
 
