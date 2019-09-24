@@ -1,0 +1,29 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title PompomPro
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  %body
+    %div
+      %ul#dropdown.dropdown-content
+        %li
+          %a{:href => "#"} Task
+        %li
+          %a{:href => "#"} Timer
+        %li
+          %a{:href => "#"} Mypage
+      %nav
+        .nav-wrapper.container
+          %a.brand-logo.left{:href => "/"} Todo Application
+          %ul.right
+            %li
+              %a{:href => ""} Top
+            %li
+              %a{:href => "#"} About
+            %li
+              %a{:href => "#"} Contact
+    = yield
