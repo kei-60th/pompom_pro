@@ -1,36 +1,33 @@
-%div
-  / 新規作成部分
-  = form_for [@task] do |f|
-    .row
-      .col.s10.m11
-        /%input.form-control{:placeholder => "Add your task!!"}/
-        = f.text_field :name, class: "form-control", placeholder: "Add your task!!"
-      .col.s2.m1
-        .btn-floating.waves-effect.waves-light.red
-          %button{:type => "submit",:class=>"btn-floating waves-effect waves-light red"}
-            %i.material-icons add
+.wrapper
+  .create-task
+    / 新規作成部分
+    = form_for [@task] do |f|
+      .row
+        .col.s10.m11
+          /%input.form-control{:placeholder => "Add your task!!"}/
+          = f.text_field :name, class: "form-control", placeholder: "Add your task!!"
+        .col.s2.m1
+          .btn-floating.waves-effect.waves-light.red
+            %button{:type => "submit",:class=>"btn-floating waves-effect waves-light red"}
+              %i.material-icons add
   / リスト表示部分
-  %div
+  .task-list
     %ul.collection
-      %li#row_task_1.collection-item
-        %input#task_1{:type => "checkbox"}/
-        %label{:for => "task_1"} Sample Task
-      %li#row_task_2.collection-item
-        %input#task_2{:type => "checkbox"}/
-        %label{:for => "task_2"} Sample Task
-      %li#row_task_3.collection-item
-        %input#task_3{:type => "checkbox"}/
-        %label{:for => "task_3"} Sample Task
-  / 完了済みタスク表示ボタン
-  .btn Display finished tasks
-  / 完了済みタスク一覧
-  #finished-tasks.display_none
-    %ul.collection
-      %li#row_task_4.collection-item
-        %input{:checked => "checked", :id => "'task_4", :type => "checkbox"}/
-        %label.line-through{"v-bind:for" => "task_4"} Done Task
-      %li#row_task_5.collection-item
-        %input{:checked => "checked", :id => "'task_5", :type => "checkbox"}/
-        %label.line-through{"v-bind:for" => "task_5"} Done Task
+      - @tasks.each do |task|
+        %li#row_task_1.collection-item
+          %input#task_1{:type => "checkbox"}/
+          %label{:for => "task_1"} 
+            = task.name
+    / 完了済みタスク表示ボタン
+    .btn Display finished tasks
+    / 完了済みタスク一覧
+    #finished-tasks.display_none
+      %ul.collection
+        %li#row_task_4.collection-item
+          %input{:checked => "checked", :id => "'task_4", :type => "checkbox"}/
+          %label.line-through{"v-bind:for" => "task_4"} Done Task
+        %li#row_task_5.collection-item
+          %input{:checked => "checked", :id => "'task_5", :type => "checkbox"}/
+          %label.line-through{"v-bind:for" => "task_5"} Done Task
 
 
