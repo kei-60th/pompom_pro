@@ -39,6 +39,7 @@ document.addEventListener("turbolinks:load", function() {
           isRunning = false;
           start.textContent= 'Start';
           clearTimeout(timerId);
+          Push.create('終了だよ!');
           timeLeft = 0;
           timeToCountDown = 0;
           updateTimer(timeLeft);
@@ -90,6 +91,7 @@ document.addEventListener("turbolinks:load", function() {
       timeToCountDown = 0;
       updateTimer(timeToCountDown);
     }
+    Push.Permission.request();
 
   })();
 
