@@ -10,3 +10,29 @@
 .task-list{
   float:right;
 }
+
+#row_task_1.collection-item{
+  position: relative;
+}
+
+.delete{
+  float:right;
+  position: absolute;
+  bottom: 0;
+  right:0;
+}
+
+.collection{
+  margin: 0;
+}
+
+.aiueo{
+  border-style: none;
+  padding:0;
+}
+
+.test{
+  border-style: none;
+  color:firebrick;
+  padding:0;
+}
