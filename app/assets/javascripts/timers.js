@@ -25,7 +25,7 @@ document.addEventListener("turbolinks:load", function() {
       m = ('0' + m).slice(-2);
       s = ('0' + s).slice(-2);
       ms = ('00' + ms).slice(-3);
-      timer.textContent = m + ':' + s + '.' + ms;
+      timer.textContent = m + ':' + s;
 
     }
 
@@ -49,7 +49,7 @@ document.addEventListener("turbolinks:load", function() {
       },10);
       //setTimeout:次の処理を10ミリ秒後に実行しなさい
     }
-    start.addEventListener('click',function(){
+    document.getElementById("start").onclick = function(){
       if(isRunning === false){
         isRunning = true;
         start.textContent = "Stop";
@@ -62,9 +62,9 @@ document.addEventListener("turbolinks:load", function() {
         clearTimeout(timerId);
       }
 
-    });
+    };
 
-    min.addEventListener('click',function(){
+    document.getElementById("min").onclick = function(){
       if (isRunning === true){
         return;
       }
@@ -73,9 +73,9 @@ document.addEventListener("turbolinks:load", function() {
         timeToCountDown = 0;
       }
       updateTimer(timeToCountDown);
-    })
+    }
 
-    sec.addEventListener('click',function(){
+    document.getElementById("sec").onclick = function(){
       if (isRunning === true){
         return;
       }
@@ -84,12 +84,12 @@ document.addEventListener("turbolinks:load", function() {
         timeToCountDown = 0;
       }
       updateTimer(timeToCountDown);
-    })
+    }
 
-    reset.addEventListener('click',function(){
+    document.getElementById("reset").onclick = function(){
       timeToCountDown = 0;
       updateTimer(timeToCountDown);
-    })
+    }
 
   })();
 
