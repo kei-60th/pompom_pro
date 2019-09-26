@@ -1,6 +1,5 @@
 document.addEventListener("turbolinks:load", function() {
 
-  (function(){
     'use strict';
 
     var timer = document.getElementById('timer');
@@ -10,6 +9,7 @@ document.addEventListener("turbolinks:load", function() {
     var start = document.getElementById('start');
     var timerId;
     var isRunning = false;
+    var result;
 
 
 
@@ -109,22 +109,31 @@ document.addEventListener("turbolinks:load", function() {
     Push.Permission.request();
 
 
-    $('.createPost').on('click',function(e){
-      e.preventDefault();
-      console.log(timeSum)
-      $.ajax({
-        url: "/posts/new",
-        type: "GET",
-        data: timeSum,
-        dataType: 'json',
-      })
-    })
-
-  })();
-
 
   $(document).ready(function(){
     $('select').formSelect();
   });
+
+  $(document).ready(function(){
+    $('.modal').modal();
+  });
+
+  $(".modal-trigger").on("click",function(){
+    console.log("played")
+    if(timeSum >= 60){
+      if(timeSum % 60 == 0){
+        result = `${timeSum / 60}時間`
+      }
+      else{
+        result = `${timeSum / 60}時間${timeSum % 60}分`
+      }
+    }
+    else{
+      result = `${timeSum}分`
+    }
+    document.getElementById("totalTime").innerText = `学習時間:${result}`;
+  });
+
+
 
 });

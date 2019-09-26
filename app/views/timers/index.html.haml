@@ -44,6 +44,20 @@
               = f.submit etask.name,class:"aiueo",name:"test",disabled:false
             %label.delete{:for => "task_1"} 
               = f.submit "delete", class:"test",name:"test"
-  .createPost
-    = link_to new_post_path do
-      .btn 学習を投稿する
+    / Modal Trigger
+  %a.waves-effect.waves-light.btn.modal-trigger{:href => "#modal1"} 投稿する
+  / Modal Structure
+  #modal1.modal.modal-fixed-footer
+    .modal-content
+      %h4 投稿画面
+      .endtaskList
+        終了したタスク:
+        - @endtasks.each do |etask|
+          =etask.name
+      #totalTime
+      
+    .modal-footer
+      %a.modal-close.waves-effect.waves-green.btn-flat{:href => "#!"} Agree
+
+
+
