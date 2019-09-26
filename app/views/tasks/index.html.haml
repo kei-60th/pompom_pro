@@ -11,29 +11,29 @@
             %button{:type => "submit",:class=>"btn-floating waves-effect waves-light red"}
               %i.material-icons add
   / リスト表示部分
-  .task-list
-    - @tasks.each do |task|
+.task-list
+  - @tasks.each do |task|
+    %ul.collection
+      = form_for task do |f|
+        %li#row_task_1.collection-item
+          %input#task_1{:type => "checkbox"}/
+          %label{:for => "task_1"} 
+            = f.submit task.name,class:"aiueo",name:"test",disabled:false
+          %label.delete{:for => "task_1"} 
+            = f.submit "delete", class:"test",name:"test"
+            /data-action="/images/1" data-method="DELETE"
+  / 完了済みタスク表示ボタン
+  .btn finished tasks!!!!!!!!!!!!
+  / 完了済みタスク一覧
+  #finished-tasks.display_none
+    - @endtasks.each do |etask|
       %ul.collection
-        = form_for task do |f|
+        = form_for etask do |f|
           %li#row_task_1.collection-item
             %input#task_1{:type => "checkbox"}/
             %label{:for => "task_1"} 
-              = f.submit task.name,class:"aiueo",name:"test",disabled:false
+              = f.submit etask.name,class:"aiueo",name:"test",disabled:false
             %label.delete{:for => "task_1"} 
               = f.submit "delete", class:"test",name:"test"
-              /data-action="/images/1" data-method="DELETE"
-    / 完了済みタスク表示ボタン
-    .btn finished tasks!!!!!!!!!!!!
-    / 完了済みタスク一覧
-    #finished-tasks.display_none
-      - @endtasks.each do |etask|
-        %ul.collection
-          = form_for etask do |f|
-            %li#row_task_1.collection-item
-              %input#task_1{:type => "checkbox"}/
-              %label{:for => "task_1"} 
-                = f.submit etask.name,class:"aiueo",name:"test",disabled:false
-              %label.delete{:for => "task_1"} 
-                = f.submit "delete", class:"test",name:"test"
 
 

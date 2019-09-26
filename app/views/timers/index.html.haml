@@ -1,10 +1,25 @@
-.timer-controls
-  #timer 00:00
-  .controls
-    %button#min MIN
-    %button#sec Sec
-    %button#reset reset
-    %button#start start
+.wrapper
+  .timer-controls
+    #timer 00:00
+    .controls
+      %button#set.btn Set
+      %button#sec.btn Sec
+      %button#reset.btn reset
+      %button#start.btn start
+  .selector
+    %select#min.pomodoro-minutes{:name => "minutes"}
+      %option{:value => "5"} 5分
+      %option{:value => "10"} 10分
+      %option{:value => "15"} 15分
+      %option{:value => "20"} 20分
+      %option{:selected => "selected", :value => "25"} 25分
+      %option{:value => "30"} 30分
+      %option{:value => "35"} 35分
+      %option{:value => "40"} 40分
+      %option{:value => "45"} 45分
+      %option{:value => "50"} 50分
+      %option{:value => "55"} 55分
+
 .task-list
   - @tasks.each do |task|
     %ul.collection
@@ -29,17 +44,3 @@
               = f.submit etask.name,class:"aiueo",name:"test",disabled:false
             %label.delete{:for => "task_1"} 
               = f.submit "delete", class:"test",name:"test"
-.controls
-  %select#min.pomodoro-minutes{:name => "minutes"}
-    %option{:value => "5"} 5分
-    %option{:value => "10"} 10分
-    %option{:value => "15"} 15分
-    %option{:value => "20"} 20分
-    %option{:selected => "selected", :value => "25"} 25分
-    %option{:value => "30"} 30分
-    %option{:value => "35"} 35分
-    %option{:value => "40"} 40分
-    %option{:value => "45"} 45分
-    %option{:value => "50"} 50分
-    %option{:value => "55"} 55分
-

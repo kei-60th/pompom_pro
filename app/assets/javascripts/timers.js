@@ -15,6 +15,7 @@ document.addEventListener("turbolinks:load", function() {
 
     var startTime;
     var timeLeft;
+    var timeCount;
     var timeToCountDown = 0;
 
     function updateTimer(t){
@@ -34,12 +35,14 @@ document.addEventListener("turbolinks:load", function() {
     function countDown(){
       timerId = setTimeout(function(){
         timeLeft = timeToCountDown - (Date.now()- startTime);
+        timeCount = Date.now()- startTime;
         //console.log(timeLeft);
-        if (timeLeft < 0){
+        if (timeLeft < 0 && isRunning === true){
           isRunning = false;
           start.textContent= 'Start';
           clearTimeout(timerId);
           Push.create('終了だよ!');
+          console.log(timeCount);
           timeLeft = 0;
           timeToCountDown = 0;
           updateTimer(timeLeft);
@@ -51,6 +54,9 @@ document.addEventListener("turbolinks:load", function() {
       //setTimeout:次の処理を10ミリ秒後に実行しなさい
     }
     document.getElementById("start").onclick = function(){
+      if (timeToCountDown === 0){
+        return;
+      }
       if(isRunning === false){
         isRunning = true;
         start.textContent = "Stop";
@@ -87,6 +93,18 @@ document.addEventListener("turbolinks:load", function() {
       updateTimer(timeToCountDown);
     }
 
+    document.getElementById("set").onclick = function(){
+      if (isRunning === true){
+        return;
+      }
+      min = parseInt(document.getElementById('min').value);
+      timeToCountDown = min * 60 * 1000;
+      if (timeToCountDown >= 60 * 60 * 1000){
+        timeToCountDown = 0;
+      }
+      updateTimer(timeToCountDown);
+    }
+
     document.getElementById("reset").onclick = function(){
       timeToCountDown = 0;
       updateTimer(timeToCountDown);
@@ -94,5 +112,11 @@ document.addEventListener("turbolinks:load", function() {
     Push.Permission.request();
 
   })();
+
+
+  $(document).ready(function(){
+    $('select').formSelect();
+  });
+
 
 });
