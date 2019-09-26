@@ -108,12 +108,23 @@ document.addEventListener("turbolinks:load", function() {
     }
     Push.Permission.request();
 
+
+    $('.createPost').on('click',function(e){
+      e.preventDefault();
+      console.log(timeSum)
+      $.ajax({
+        url: "/posts/new",
+        type: "GET",
+        data: timeSum,
+        dataType: 'json',
+      })
+    })
+
   })();
 
 
   $(document).ready(function(){
     $('select').formSelect();
   });
-
 
 });
