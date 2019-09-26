@@ -6,7 +6,7 @@ document.addEventListener("turbolinks:load", function() {
     var timer = document.getElementById('timer');
     var min = document.getElementById('min');
     var sec = document.getElementById('sec');
-    var reset= document.getElementById('reset');
+    var reset = document.getElementById('reset');
     var start = document.getElementById('start');
     var timerId;
     var isRunning = false;
@@ -16,6 +16,7 @@ document.addEventListener("turbolinks:load", function() {
     var startTime;
     var timeLeft;
     var timeCount;
+    var timeSam = 0;
     var timeToCountDown = 0;
 
     function updateTimer(t){
@@ -42,7 +43,9 @@ document.addEventListener("turbolinks:load", function() {
           start.textContent= 'Start';
           clearTimeout(timerId);
           Push.create('終了だよ!');
-          console.log(timeCount);
+          timeSam += Math.round(timeCount / 60000);
+          console.log(timeSam);
+          timeCount = 0;
           timeLeft = 0;
           timeToCountDown = 0;
           updateTimer(timeLeft);
@@ -71,17 +74,6 @@ document.addEventListener("turbolinks:load", function() {
 
     };
 
-    document.getElementById("min").onclick = function(){
-      if (isRunning === true){
-        return;
-      }
-      timeToCountDown += 60 * 1000;
-      if (timeToCountDown >= 60 * 60 * 1000){
-        timeToCountDown = 0;
-      }
-      updateTimer(timeToCountDown);
-    }
-
     document.getElementById("sec").onclick = function(){
       if (isRunning === true){
         return;
@@ -103,10 +95,15 @@ document.addEventListener("turbolinks:load", function() {
         timeToCountDown = 0;
       }
       updateTimer(timeToCountDown);
+      timeCount = 0;
     }
 
     document.getElementById("reset").onclick = function(){
+      if (isRunning === true){
+        return;
+      }
       timeToCountDown = 0;
+      timeCount = 0;
       updateTimer(timeToCountDown);
     }
     Push.Permission.request();
