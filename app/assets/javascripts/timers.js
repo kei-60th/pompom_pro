@@ -16,7 +16,7 @@ document.addEventListener("turbolinks:load", function() {
     var startTime;
     var timeLeft;
     var timeCount;
-    var timeSam = 0;
+    var timeSum = 0;
     var timeToCountDown = 0;
 
     function updateTimer(t){
@@ -43,8 +43,8 @@ document.addEventListener("turbolinks:load", function() {
           start.textContent= 'Start';
           clearTimeout(timerId);
           Push.create('終了だよ!');
-          timeSam += Math.round(timeCount / 60000);
-          console.log(timeSam);
+          timeSum += Math.round(timeCount / 60000);
+          console.log(timeSum);
           timeCount = 0;
           timeLeft = 0;
           timeToCountDown = 0;
