@@ -44,6 +44,3 @@
               = f.submit etask.name,class:"aiueo",name:"test",disabled:false
             %label.delete{:for => "task_1"} 
               = f.submit "delete", class:"test",name:"test"
-  .form
-    = form_for @tasks, url: new_post_path do |f|
-      = f.submit "Send", class: "submit-btn"
