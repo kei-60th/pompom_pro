@@ -44,3 +44,6 @@
               = f.submit etask.name,class:"aiueo",name:"test",disabled:false
             %label.delete{:for => "task_1"} 
               = f.submit "delete", class:"test",name:"test"
+  .createPost
+    = link_to new_post_path do
+      .btn 学習を投稿する
