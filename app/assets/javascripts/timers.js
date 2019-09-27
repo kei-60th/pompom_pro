@@ -136,9 +136,21 @@ document.addEventListener("turbolinks:load", function() {
     $("#totalTime").append(totalTimeContent);
   });
 
+  $('#new_post').on('submit',function(e){
+    e.preventDefault();
+    var textContent = document.getElementById ('post_body'); 
+    $.ajax({
+      url: "/posts",
+      type: "POST",
+      data: {
+        time:timeSum,
+        body:textContent.value
+      },
+      dataType: 'json',
+    })
+  })
 
 
 });
-
 
 
