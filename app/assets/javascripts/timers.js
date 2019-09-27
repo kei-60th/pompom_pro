@@ -126,14 +126,13 @@ document.addEventListener("turbolinks:load", function() {
         result = `${timeSum / 60}時間`
       }
       else{
-        result = `${timeSum / 60}時間${timeSum % 60}分`
+        result = `${Math.floor( timeSum / 60 ) }時間${timeSum % 60}分`
       }
     }
     else{
       result = `${timeSum}分`
     }
-    totalTimeContent = `<div class="totalTime" data-time="${timeSum}">学習時間:${result}</div>`
-    $("#totalTime").append(totalTimeContent);
+    document.getElementById("totalTime").innerText = `学習時間:${result}`;
   });
 
   $('#new_post').on('submit',function(e){
