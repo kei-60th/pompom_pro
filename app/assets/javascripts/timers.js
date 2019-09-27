@@ -57,7 +57,7 @@ document.addEventListener("turbolinks:load", function() {
       },10);
       //setTimeout:次の処理を10ミリ秒後に実行しなさい
     }
-    document.getElementById("start").onclick = function(){
+    $("#start").on("click",function(){
       if (timeToCountDown === 0){
         return;
       }
@@ -73,9 +73,9 @@ document.addEventListener("turbolinks:load", function() {
         clearTimeout(timerId);
       }
 
-    };
+    });
 
-    document.getElementById("sec").onclick = function(){
+    $("#sec").on("click",function(){
       if (isRunning === true){
         return;
       }
@@ -84,9 +84,9 @@ document.addEventListener("turbolinks:load", function() {
         timeToCountDown = 0;
       }
       updateTimer(timeToCountDown);
-    }
+    });
 
-    document.getElementById("set").onclick = function(){
+    $("#set").on("click",function(){
       if (isRunning === true){
         return;
       }
@@ -97,19 +97,17 @@ document.addEventListener("turbolinks:load", function() {
       }
       updateTimer(timeToCountDown);
       timeCount = 0;
-    }
+    });
 
-    document.getElementById("reset").onclick = function(){
+    $("#reset").on("click",function(){
       if (isRunning === true){
         return;
       }
       timeToCountDown = 0;
       timeCount = 0;
       updateTimer(timeToCountDown);
-    }
+    });
     Push.Permission.request();
-
-
 
   $(document).ready(function(){
     $('select').formSelect();
