@@ -10,6 +10,7 @@ document.addEventListener("turbolinks:load", function() {
     var timerId;
     var isRunning = false;
     var result;
+    var totalTimeContent;
 
 
 
@@ -131,9 +132,13 @@ document.addEventListener("turbolinks:load", function() {
     else{
       result = `${timeSum}分`
     }
-    document.getElementById("totalTime").innerText = `学習時間:${result}`;
+    totalTimeContent = `<div class="totalTime" data-time="${timeSum}">学習時間:${result}</div>`
+    $("#totalTime").append(totalTimeContent);
   });
 
 
 
 });
+
+
+

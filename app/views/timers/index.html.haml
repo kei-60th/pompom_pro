@@ -48,16 +48,16 @@
   %a.waves-effect.waves-light.btn.modal-trigger{:href => "#modal1"} 投稿する
   / Modal Structure
   #modal1.modal.modal-fixed-footer
-    .modal-content
-      %h4 投稿画面
-      .endtaskList
-        終了したタスク:
-        - @endtasks.each do |etask|
-          =etask.name
-      #totalTime
-      
-    .modal-footer
-      %a.modal-close.waves-effect.waves-green.btn-flat{:href => "#!"} Agree
-
-
-
+    .form
+      = form_for @post do |f|
+        .modal-content
+          %h4 投稿画面
+          .endtaskList
+            終了したタスク:
+            - @endtasks.each do |etask|
+              =etask.name
+          #totalTime
+          = f.text_area :body, class: "input-box__text", placeholder: "type a message"
+          
+        .modal-footer
+          = f.submit "投稿する", class: "btn"
