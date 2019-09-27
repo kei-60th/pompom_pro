@@ -1,0 +1,2 @@
+class Endtask < ApplicationRecord
+end
