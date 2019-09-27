@@ -4,6 +4,7 @@ class TasksController < ApplicationController
     @task = Task.new
     @tasks = Task.where("is_done != 1").order('updated_at DESC')
     @endtasks = Task.where("is_done = 1").order('updated_at DESC')
+    @post = Post.new
   end
 
   def create

@@ -35,5 +35,22 @@
               = f.submit etask.name,class:"aiueo",name:"test",disabled:false
             %label.delete{:for => "task_1"} 
               = f.submit "delete", class:"test",name:"test"
+      / Modal Trigger
+  %a.waves-effect.waves-light.btn.modal-trigger{:href => "#modal1"} 投稿する
+  / Modal Structure
+  #modal1.modal.modal-fixed-footer
+    .form
+      = form_for @post do |f|
+        .modal-content
+          %h4 投稿画面
+          .endtaskList
+            終了したタスク:
+            - @endtasks.each do |etask|
+              =etask.name
+          #totalTime
+          = f.text_area :body, class: "input-box__text", placeholder: "type a message"
+          
+        .modal-footer
+          = f.submit "投稿する", class: "btn"
 
 
