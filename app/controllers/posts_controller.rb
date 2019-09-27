@@ -5,6 +5,11 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.save
+    @tasks = Task.where("is_done != false").order('updated_at DESC')
+    @tasks.each do |task|
+      @endtask = Endtask.create(post_id: @post.id,name: task.name)
+      task.delete
+    end
   end
 
 
