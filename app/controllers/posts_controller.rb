@@ -1,5 +1,7 @@
 class PostsController < ApplicationController
-  def new
+
+  def index
+    @posts = Post.all.order("id DESC")
   end
 
   def create
@@ -10,6 +12,7 @@ class PostsController < ApplicationController
       @endtask = Endtask.create(post_id: @post.id,name: task.name)
       task.delete
     end
+    redirect_to posts_path
   end
 
 

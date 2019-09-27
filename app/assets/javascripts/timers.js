@@ -17,7 +17,7 @@ document.addEventListener("turbolinks:load", function() {
     var startTime;
     var timeLeft;
     var timeCount;
-    var timeSum = 0;
+    var timeSum = 600;
     var timeToCountDown = 0;
 
     function updateTimer(t){
@@ -143,7 +143,6 @@ document.addEventListener("turbolinks:load", function() {
         time:timeSum,
         body:textContent.value
       },
-      dataType: 'json',
     })
   })
 
