@@ -2,15 +2,19 @@ class TasksController < ApplicationController
 
   def index
     @task = Task.new
-    @tasks = Task.where("is_done != 1").order('updated_at DESC')
-    @endtasks = Task.where("is_done = 1").order('updated_at DESC')
+    @tasks = Task.where("is_done != 1")
+    @endtasks = Task.where("is_done = 1")
     @post = Post.new
   end
 
   def create
     @task = Task.new(task_params)
+    authenticity_token = params[:authenticity_token]
     if @task.save
-      redirect_to root_path
+      respond_to do |format|
+        format.html{redirect_to root_path, notice: 'メッセージが送信されました'}
+        format.json
+      end
     end
   end
 
@@ -22,13 +26,14 @@ class TasksController < ApplicationController
       @task.is_done = 1
     end
     unless params.require(:test)=="delete"
-      if @task.update(task_params)
-        redirect_to root_path
-      end
-      else
-        @task.delete
-        redirect_to root_path
-      end
+      @task.update(task_params)
+    else
+      @task.delete
+    end
+    respond_to do |format|
+      format.html{redirect_to root_path, notice: '更新しました'}
+      format.json
+    end
   end
 
 
@@ -39,4 +44,5 @@ class TasksController < ApplicationController
         :name, :is_done
     )
   end
+
 end
