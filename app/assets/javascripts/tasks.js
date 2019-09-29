@@ -12,7 +12,7 @@ document.addEventListener("turbolinks:load", function() {
                         <input type="submit" name="test" value=${task.name} class="aiueo" data-disable-with=${task.name} data-task-id=${task.id} />
                       </label>
                       <label class='delete' for='task_1'>
-                        <input type="submit" name="test" value="delete" class="test" data-disable-with="delete" />
+                        <input type="submit" name="test" value="delete" class="test" data-disable-with="delete" data-task-id=${task.id} />
                       </label>
                     </li>
                 </form></ul>`
@@ -68,6 +68,24 @@ document.addEventListener("turbolinks:load", function() {
       }
     })
   })
+
+  $(document).on("click", ".test", function (e) {
+    e.preventDefault();
+    var taskId=$(this).data("taskId");
+    var test=$(this).val();
+    $.ajax({
+      url: `/tasks/${taskId}`,
+      type: 'patch',
+      dataType: 'json',
+      data: {test: test}
+    })
+    .done(function(){
+      var deleteChild = document.querySelector(`#edit_task_${taskId}`)
+      deleteContent = $(deleteChild).parent()
+      deleteContent.remove()
+    })
+  })
+
 
 
 });

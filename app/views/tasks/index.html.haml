@@ -1,16 +1,13 @@
 .wrapper
   .create-task
-    / 新規作成部分
     = form_for [@task] do |f|
       .row
         .col.s10.m11
-          /%input.form-control{:placeholder => "Add your task!!"}/
           = f.text_field :name, class: "form-control", placeholder: "Add your task!!"
         .col.s2.m1
           .btn-floating.waves-effect.waves-light.red
             %button{:type => "submit",:class=>"btn-floating waves-effect waves-light red"}
               %i.material-icons add
-  / リスト表示部分
 .task-list
   #unfinished-tasks
     - @tasks.each do |task|
@@ -21,10 +18,8 @@
             %label{:for => "task_1"} 
               = f.submit task.name,class:"aiueo",name:"test",disabled:false,"data-task-id": task.id
             %label.delete{:for => "task_1"} 
-              = f.submit "delete", class:"test",name:"test"
-  / 完了済みタスク表示ボタン
+              = f.submit "delete", class:"test",name:"test","data-task-id": task.id
   .btn finished tasks!!!!!!!!!!!!
-  / 完了済みタスク一覧
   #finished-tasks.display_none
     - @endtasks.each do |etask|
       %ul.collection
@@ -34,10 +29,8 @@
             %label{:for => "task_1"} 
               = f.submit etask.name,class:"aiueo",name:"test",disabled:false,"data-task-id": etask.id
             %label.delete{:for => "task_1"} 
-              = f.submit "delete", class:"test",name:"test"
-      / Modal Trigger
+              = f.submit "delete", class:"test",name:"test","data-task-id": etask.id
   %a.waves-effect.waves-light.btn.modal-trigger{:href => "#modal1"} 投稿する
-  / Modal Structure
   #modal1.modal.modal-fixed-footer
     .form
       = form_for @post do |f|
@@ -49,7 +42,6 @@
               =etask.name
           #totalTime
           = f.text_area :body, class: "input-box__text", placeholder: "type a message"
-          
         .modal-footer
           = f.submit "投稿する", class: "btn"
 
