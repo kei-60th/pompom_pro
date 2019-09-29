@@ -128,8 +128,7 @@ document.addEventListener("turbolinks:load", function() {
 
 
 
-  function buildPost(post){
-
+  function buildPost(post,array){
     var html = `
     <div class='row'>
       <div class='col s12 m6'>
@@ -137,7 +136,7 @@ document.addEventListener("turbolinks:load", function() {
           <div class='card-content white-text'>
             <span class='card-title'>${post.year} 年 ${post.month} 月 ${post.day} 日 の積み上げ</span>
             <p>学習時間:${post.time}分</p>
-            <p>完了したタスク:</p>
+            <p>完了したタスク:${array}</p>
             <p>${post.body}</p>
           </div>
           <div class='card-action'>
@@ -185,12 +184,17 @@ document.addEventListener("turbolinks:load", function() {
       },
     })
     .done(function(post){
+      console.log(post.endTasks)
+      var array = [];
+      post.endTasks.forEach(function(el){
+        array.push(el.name)
+      });
       classList1.add("hidden")
       classList2.add("hidden")
       classList3.add("hidden")
       classList4.remove("hidden")
       $(".modal-close").prop("disabled", false);
-      var html = buildPost(post);
+      var html = buildPost(post,array);
       $("#mypage-function").prepend(html)
     })
   })
