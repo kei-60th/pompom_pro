@@ -157,6 +157,12 @@ document.addEventListener("turbolinks:load", function() {
 
   $(".modal-trigger").on("click",function(){
     console.log("played")
+    var taskList = document.querySelectorAll(".kakikukeko")
+    var taskIds = [], taskNames = []
+    taskList.forEach(function(el){
+      taskIds.push($(el).data("taskId"))
+      taskNames.push($(el).val())
+    });
     if(timeSum >= 60){
       if(timeSum % 60 == 0){
         result = `${timeSum / 60}時間`
@@ -169,36 +175,43 @@ document.addEventListener("turbolinks:load", function() {
       result = `${timeSum}分`
     }
     document.getElementById("totalTime").innerText = `学習時間:${result}`;
+    document.getElementById("totalTime").innerText = `完了したタスク:${taskNames}`;
+
+    $('#new_post').on('submit',function(e){
+      e.preventDefault();
+      var textContent = document.getElementById ('post_body'); 
+      $.ajax({
+        url: "/posts",
+        type: "POST",
+        dataType: 'json',
+        data: {
+          time:timeSum,
+          body:textContent.value
+        },
+      })
+      .done(function(post){
+        console.log(taskIds)
+        var array = [];
+        var deletes = [];
+        post.endTasks.forEach(function(el){
+          array.push(el.name)
+        });
+        classList1.add("hidden")
+        classList2.add("hidden")
+        classList3.add("hidden")
+        classList4.remove("hidden")
+        $(".modal-close").prop("disabled", false);
+        var html = buildPost(post,array);
+        $("#mypage-function").prepend(html)
+        taskIds.forEach(function(el){
+          var deleteChild =document.querySelector(`#edit_task_${el}`)
+          deleteContent = $(deleteChild).parent()
+          deleteContent.remove()
+        });
+
+
+
+      })
+    })
   });
-
-  $('#new_post').on('submit',function(e){
-    e.preventDefault();
-    var textContent = document.getElementById ('post_body'); 
-    $.ajax({
-      url: "/posts",
-      type: "POST",
-      dataType: 'json',
-      data: {
-        time:timeSum,
-        body:textContent.value
-      },
-    })
-    .done(function(post){
-      console.log(post.endTasks)
-      var array = [];
-      post.endTasks.forEach(function(el){
-        array.push(el.name)
-      });
-      classList1.add("hidden")
-      classList2.add("hidden")
-      classList3.add("hidden")
-      classList4.remove("hidden")
-      $(".modal-close").prop("disabled", false);
-      var html = buildPost(post,array);
-      $("#mypage-function").prepend(html)
-    })
-  })
-
-
 });
-

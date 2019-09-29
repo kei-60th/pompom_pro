@@ -9,7 +9,7 @@ document.addEventListener("turbolinks:load", function() {
                     <li class='collection-item' id='row_task_1'>
                       <input id='task_1' type='checkbox'>
                       <label for='task_1'>
-                        <input type="submit" name="test" value=${task.name} class="aiueo" data-disable-with=${task.name} data-task-id=${task.id} />
+                        <input type="submit" name="test" value=${task.name} class="aiueo kakikukeko" data-disable-with=${task.name} data-task-id=${task.id} />
                       </label>
                       <label class='delete' for='task_1'>
                         <input type="submit" name="test" value="delete" class="test" data-disable-with="delete" data-task-id=${task.id} />
