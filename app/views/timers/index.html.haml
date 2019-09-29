@@ -1,4 +1,4 @@
-.wrapper
+.timer-function
   .timer-controls
     #timer 00:00
     .controls
@@ -20,7 +20,7 @@
       %option{:value => "50"} 50分
       %option{:value => "55"} 55分
 
-.task-list
+.task-list-function
   - @tasks.each do |task|
     %ul.collection
       = form_for task do |f|

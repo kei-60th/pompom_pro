@@ -1,4 +1,4 @@
-.wrapper
+.create-task-function
   .create-task
     = form_for [@task] do |f|
       .row
@@ -9,8 +9,8 @@
             %button{:type => "submit",:class=>"btn-floating waves-effect waves-light red"}
               %i.material-icons add
 
-              
-.task-list
+
+.task-list-function
   #unfinished-tasks
     - @tasks.each do |task|
       %ul.collection
