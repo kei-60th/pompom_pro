@@ -5,6 +5,7 @@ class TasksController < ApplicationController
     @tasks = Task.where("is_done != 1")
     @endtasks = Task.where("is_done = 1")
     @post = Post.new
+    @posts = Post.all.order("id DESC")
   end
 
   def create

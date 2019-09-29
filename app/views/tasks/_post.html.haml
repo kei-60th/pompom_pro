@@ -1,0 +1,36 @@
+- posts.each do |post|
+  .row
+    .col.s12.m6
+      .card.blue-grey.darken-1
+        .card-content.white-text
+          %span.card-title 
+            = post.created_at.strftime("%Y")
+            年
+            = post.created_at.strftime("%-m")
+            月
+            = post.created_at.strftime("%-d")
+            日
+            の積み上げ
+          %p 
+            学習時間:
+            - if post.time >= 60
+              - if post.time % 60 == 0
+                = (post.time / 60)
+                時間
+              - else
+                = (post.time / 60).floor
+                時間
+                = (post.time % 60)
+                分
+            - else
+              = post.time
+              分
+          %p 
+            完了したタスク:
+            - post.endtasks.each do |endtask|
+              = endtask.name
+          %p
+            = post.body
+        .card-action
+          = link_to "編集", "#"
+          = link_to "削除", "#"
