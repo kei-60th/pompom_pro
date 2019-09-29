@@ -1,4 +1,4 @@
-.create-task-function
+#create-task-function
   .create-task
     = form_for [@task] do |f|
       .row
@@ -10,7 +10,7 @@
               %i.material-icons add
 
 
-.task-list-function
+#task-list-function
   #unfinished-tasks
     - @tasks.each do |task|
       %ul.collection
@@ -48,7 +48,7 @@
           = f.submit "投稿する", class: "btn"
 
 
-.timer-function.hidden
+#timer-function.hidden
   .timer-controls
     #timer 00:00
     .controls
@@ -70,6 +70,6 @@
       %option{:value => "50"} 50分
       %option{:value => "55"} 55分
 
-.mypage-function.hidden
+#mypage-function.hidden
   = render partial: "post", locals: { posts: @posts }
 

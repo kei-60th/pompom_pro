@@ -15,9 +15,12 @@
           %a.brand-logo.left{:href => "/"} Todo Application
           %ul.right
             %li
-              %a{:href => root_path} Task
+              %button{type: "button",class: "nav-button task-page"}
+                Task
             %li
-              %a{:href => timers_path} Timer
+              %button{type: "button",class: "nav-button timer-page"}
+                Timer
             %li
-              %a{:href => posts_path} Mypage
+              %button{type: "button",class: "nav-button mypage"}
+                Mypage
     = yield
