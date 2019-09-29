@@ -38,7 +38,7 @@
       = form_for @post do |f|
         .modal-content
           %h4 投稿画面
-          .endtaskList
+          #endtaskList
             終了したタスク:
             - @endtasks.each do |etask|
               =etask.name

@@ -12,7 +12,7 @@ class PostsController < ApplicationController
       @endtask = Endtask.create(post_id: @post.id,name: task.name)
       task.delete
     end
-    redirect_to posts_path
+    redirect_to root_path
   end
 
 
