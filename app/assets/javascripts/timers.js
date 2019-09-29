@@ -11,6 +11,10 @@ document.addEventListener("turbolinks:load", function() {
     var isRunning = false;
     var result;
     var totalTimeContent;
+    var tmp = document.getElementById('create-task-function'),classList1 = tmp.classList;
+    var tmp = document.getElementById('task-list-function'),classList2 = tmp.classList;
+    var tmp = document.getElementById('timer-function'),classList3 = tmp.classList;
+    var tmp = document.getElementById('mypage-function'),classList4 = tmp.classList;
 
 
 
@@ -113,6 +117,41 @@ document.addEventListener("turbolinks:load", function() {
     $('select').formSelect();
   });
 
+
+
+
+
+
+
+
+
+
+
+
+  function buildPost(post){
+
+    var html = `
+    <div class='row'>
+      <div class='col s12 m6'>
+        <div class='card blue-grey darken-1'>
+          <div class='card-content white-text'>
+            <span class='card-title'>${post.year} 年 ${post.month} 月 ${post.day} 日 の積み上げ</span>
+            <p>学習時間:${post.time}分</p>
+            <p>完了したタスク:</p>
+            <p>${post.body}</p>
+          </div>
+          <div class='card-action'>
+            <a href="#">編集</a>
+            <a href="#">削除</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    `
+    return html;
+  }
+
+
   $(document).ready(function(){
     $('.modal').modal();
   });
@@ -139,14 +178,23 @@ document.addEventListener("turbolinks:load", function() {
     $.ajax({
       url: "/posts",
       type: "POST",
+      dataType: 'json',
       data: {
         time:timeSum,
         body:textContent.value
       },
     })
+    .done(function(post){
+      classList1.add("hidden")
+      classList2.add("hidden")
+      classList3.add("hidden")
+      classList4.remove("hidden")
+      $(".modal-close").prop("disabled", false);
+      var html = buildPost(post);
+      $("#mypage-function").prepend(html)
+    })
   })
 
 
 });
-
 
