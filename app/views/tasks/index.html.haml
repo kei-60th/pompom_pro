@@ -48,7 +48,7 @@
           = f.submit "投稿する", class: "btn"
 
 
-.timer-function
+.timer-function.hidden
   .timer-controls
     #timer 00:00
     .controls
@@ -70,6 +70,6 @@
       %option{:value => "50"} 50分
       %option{:value => "55"} 55分
 
-.mypage-function
+.mypage-function.hidden
   = render partial: "post", locals: { posts: @posts }
 
