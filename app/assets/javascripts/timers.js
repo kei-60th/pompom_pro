@@ -21,7 +21,7 @@ document.addEventListener("turbolinks:load", function() {
     var startTime;
     var timeLeft;
     var timeCount;
-    var timeSum = 200;
+    var timeSum = 0;
     var timeToCountDown = 0;
 
     function updateTimer(t){
