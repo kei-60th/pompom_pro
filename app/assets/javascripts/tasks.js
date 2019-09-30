@@ -38,6 +38,8 @@ document.addEventListener("turbolinks:load", function() {
     .done(function(task){
       var html = buildTask(task);
       $("#unfinished-tasks").append(html)
+      var parent = document.querySelector("#unfinished-tasks").lastChild
+      $(parent).hide().fadeIn(5000);
       $('.form-control').val('')
     })
     .fail(function(){
