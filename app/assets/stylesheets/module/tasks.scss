@@ -3,6 +3,35 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
+.unfinished-tasks-box{
+  background-color:#01579b;
+  width:400px;
+  height:42.47px;
+  padding: 10px 20px;
+  box-sizing: inherit;
+  border-radius: 0.2em;
+  .tasks-logo{
+    display: inline;
+    color: white;
+  }
+}
+
+.finished-tasks-box{
+  background-color:#ef6c00 ;
+  width:100%;
+  height:42.47px;
+  padding: 10px 20px;
+  box-sizing: inherit;
+  border-radius: 0.2em;
+  .tasks-logo{
+    display: inline;
+    color: white;
+  }
+}
+
+.waves-effect.waves-light.btn.modal-trigger{
+  float:right;
+}
 
 #task-list-function{
   float:right;
@@ -32,4 +61,18 @@
   border-style: none;
   color:firebrick;
   padding:0;
+}
+
+
+.modal-trigger{
+  margin-top:10px;
+}
+
+.aiueo{
+  transition: background-color .5s;
+  cursor: pointer;
+}
+
+.aiueo:hover {
+  background-color: #e0e0e0;
 }

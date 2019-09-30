@@ -11,6 +11,8 @@
 
 
 #task-list-function
+  .unfinished-tasks-box
+    .tasks-logo 実施中のタスク
   #unfinished-tasks
     - @tasks.each do |task|
       %ul.collection
@@ -21,8 +23,9 @@
               = f.submit task.name,class:"aiueo serch-#{task.id}",name:"test",disabled:false,"data-task-id": task.id
             %label.delete{:for => "task_1"} 
               = f.submit "delete", class:"test",name:"test","data-task-id": task.id
-  .btn finished tasks!!!!!!!!!!!!
   #finished-tasks
+    .finished-tasks-box
+      .tasks-logo 完了したタスク
     - @endtasks.each do |etask|
       %ul.collection
         = form_for etask do |f|
@@ -32,7 +35,7 @@
               = f.submit etask.name,class:"aiueo serch-#{etask.id} kakikukeko",name:"test",disabled:false,"data-task-id": etask.id
             %label.delete{:for => "task_1"} 
               = f.submit "delete", class:"test",name:"test","data-task-id": etask.id
-  %a.waves-effect.waves-light.btn.modal-trigger{:href => "#modal1"} 投稿する
+  %a.waves-effect.waves-light.btn.orange.darken-4.modal-trigger{:href => "#modal1"} 投稿する
   #modal1.modal.modal-fixed-footer
     .form
       = form_for @post do |f|
@@ -69,4 +72,5 @@
 
 #mypage-function.hidden
   = render partial: "post", locals: { posts: @posts }
+
 
