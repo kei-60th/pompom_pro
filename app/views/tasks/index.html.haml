@@ -18,7 +18,7 @@
           %li#row_task_1.collection-item
             %input#task_1{:type => "checkbox"}/
             %label{:for => "task_1"} 
-              = f.submit task.name,class:"aiueo",name:"test",disabled:false,"data-task-id": task.id
+              = f.submit task.name,class:"aiueo serch-#{task.id}",name:"test",disabled:false,"data-task-id": task.id
             %label.delete{:for => "task_1"} 
               = f.submit "delete", class:"test",name:"test","data-task-id": task.id
   .btn finished tasks!!!!!!!!!!!!
@@ -29,7 +29,7 @@
           %li#row_task_1.collection-item
             %input#task_1{:type => "checkbox"}/
             %label{:for => "task_1"} 
-              = f.submit etask.name,class:"aiueo kakikukeko",name:"test",disabled:false,"data-task-id": etask.id
+              = f.submit etask.name,class:"aiueo serch-#{etask.id} kakikukeko",name:"test",disabled:false,"data-task-id": etask.id
             %label.delete{:for => "task_1"} 
               = f.submit "delete", class:"test",name:"test","data-task-id": etask.id
   %a.waves-effect.waves-light.btn.modal-trigger{:href => "#modal1"} 投稿する

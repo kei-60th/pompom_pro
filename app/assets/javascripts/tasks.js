@@ -9,7 +9,7 @@ document.addEventListener("turbolinks:load", function() {
                     <li class='collection-item' id='row_task_1'>
                       <input id='task_1' type='checkbox'>
                       <label for='task_1'>
-                        <input type="submit" name="test" value=${task.name} class="aiueo kakikukeko" data-disable-with=${task.name} data-task-id=${task.id} />
+                        <input type="submit" name="test" value=${task.name} class="aiueo serch-${task.id}" data-disable-with=${task.name} data-task-id=${task.id} />
                       </label>
                       <label class='delete' for='task_1'>
                         <input type="submit" name="test" value="delete" class="test" data-disable-with="delete" data-task-id=${task.id} />
@@ -62,9 +62,13 @@ document.addEventListener("turbolinks:load", function() {
       deleteContent.remove()
       if (task.isDone){
         $("#finished-tasks").append(html);
+        var element = document.getElementsByClassName(`serch-${task.id}`)
+        $(element).addClass("kakikukeko")
       }
       else {
         $("#unfinished-tasks").append(html);
+        var element = document.getElementsByClassName(`serch-${task.id}`)
+        $(element).removeClass("kakikukeko")
       }
     })
   })

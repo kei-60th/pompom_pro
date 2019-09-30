@@ -21,7 +21,7 @@ document.addEventListener("turbolinks:load", function() {
     var startTime;
     var timeLeft;
     var timeCount;
-    var timeSum = 0;
+    var timeSum = 200;
     var timeToCountDown = 0;
 
     function updateTimer(t){
@@ -129,13 +129,24 @@ document.addEventListener("turbolinks:load", function() {
 
 
   function buildPost(post,array){
+    if (post.time >= 60){
+      if (post.time % 60 === 0){
+        var timeText = `学習時間: ${post.time / 60} 時間`
+      }
+      else{
+        var timeText = `学習時間: ${(Math.floor(post.time / 60))} 時間 ${post.time % 60} 分`
+      }
+    }
+    else{
+      var timeText = `学習時間: ${post.time} 分`
+    }
     var html = `
     <div class='row'>
       <div class='col s12 m6'>
         <div class='card blue-grey darken-1'>
           <div class='card-content white-text'>
             <span class='card-title'>${post.year} 年 ${post.month} 月 ${post.day} 日 の積み上げ</span>
-            <p>学習時間:${post.time}分</p>
+            <p>${timeText}</p>
             <p>完了したタスク:${array}</p>
             <p>${post.body}</p>
           </div>
@@ -158,9 +169,8 @@ document.addEventListener("turbolinks:load", function() {
   $(".modal-trigger").on("click",function(){
     console.log("played")
     var taskList = document.querySelectorAll(".kakikukeko")
-    var taskIds = [], taskNames = []
+    var taskNames = []
     taskList.forEach(function(el){
-      taskIds.push($(el).data("taskId"))
       taskNames.push($(el).val())
     });
     if(timeSum >= 60){
@@ -175,43 +185,43 @@ document.addEventListener("turbolinks:load", function() {
       result = `${timeSum}分`
     }
     document.getElementById("totalTime").innerText = `学習時間:${result}`;
-    document.getElementById("totalTime").innerText = `完了したタスク:${taskNames}`;
-
-    $('#new_post').on('submit',function(e){
-      e.preventDefault();
-      var textContent = document.getElementById ('post_body'); 
-      $.ajax({
-        url: "/posts",
-        type: "POST",
-        dataType: 'json',
-        data: {
-          time:timeSum,
-          body:textContent.value
-        },
-      })
-      .done(function(post){
-        console.log(taskIds)
-        var array = [];
-        var deletes = [];
-        post.endTasks.forEach(function(el){
-          array.push(el.name)
-        });
-        classList1.add("hidden")
-        classList2.add("hidden")
-        classList3.add("hidden")
-        classList4.remove("hidden")
-        $(".modal-close").prop("disabled", false);
-        var html = buildPost(post,array);
-        $("#mypage-function").prepend(html)
-        taskIds.forEach(function(el){
-          var deleteChild =document.querySelector(`#edit_task_${el}`)
-          deleteContent = $(deleteChild).parent()
-          deleteContent.remove()
-        });
-
-
-
-      })
-    })
+    document.getElementById("endtaskList").innerText = `完了したタスク:${taskNames}`;
   });
+  $('#new_post').on('submit',function(e){
+    e.preventDefault();
+    var taskList = document.querySelectorAll(".kakikukeko")
+    var textContent = document.getElementById ('post_body'); 
+    $.ajax({
+      url: "/posts",
+      type: "POST",
+      dataType: 'json',
+      data: {
+        time:timeSum,
+        body:textContent.value
+      },
+    })
+    .done(function(post){
+      var taskIds = []
+      taskList.forEach(function(el){
+        taskIds.push($(el).data("taskId"))
+      });
+      var array = [];
+      post.endTasks.forEach(function(el){
+        array.push(el.name)
+      });
+      classList1.add("hidden")
+      classList2.add("hidden")
+      classList3.add("hidden")
+      classList4.remove("hidden")
+      $(".modal-close").prop("disabled", false);
+      var html = buildPost(post,array);
+      $("#mypage-function").prepend(html)
+      taskIds.forEach(function(el){
+        var deleteChild =document.querySelector(`#edit_task_${el}`)
+        var deleteContent = $(deleteChild).parent()
+        deleteContent.remove()
+        timeSum = 0;
+      });
+    })
+  })
 });
