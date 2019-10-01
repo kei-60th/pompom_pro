@@ -71,11 +71,25 @@ document.addEventListener("turbolinks:load", function() {
         $("#finished-tasks").append(html);
         var element = document.getElementsByClassName(`serch-${task.id}`)
         $(element).addClass("kakikukeko")
+        var parent = document.querySelector("#finished-tasks").lastChild
+        $(parent).css({
+          'left': '-200px'
+        })
+        $(parent).animate({
+          'left': '0px'
+        },800);
       }
       else {
         $("#unfinished-tasks").append(html);
         var element = document.getElementsByClassName(`serch-${task.id}`)
         $(element).removeClass("kakikukeko")
+        var parent = document.querySelector("#unfinished-tasks").lastChild
+        $(parent).css({
+          'left': '-200px'
+        })
+        $(parent).animate({
+          'left': '0px'
+        },800);
       }
     })
   })
