@@ -33,7 +33,7 @@ document.addEventListener("turbolinks:load", function() {
       s = ('0' + s).slice(-2);
       ms = ('00' + ms).slice(-3);
       timer.textContent = m + ':' + s;
-
+      document.title = m + ':' + s;
     }
 
 
@@ -42,14 +42,12 @@ document.addEventListener("turbolinks:load", function() {
       timerId = setTimeout(function(){
         timeLeft = timeToCountDown - (Date.now()- startTime);
         timeCount = Date.now()- startTime;
-        //console.log(timeLeft);
         if (timeLeft < 0 && isRunning === true){
           isRunning = false;
           start.textContent= 'Start';
           clearTimeout(timerId);
           Push.create('終了だよ!');
           timeSum += Math.round(timeCount / 60000);
-          console.log(timeSum);
           timeCount = 0;
           timeLeft = 0;
           timeToCountDown = 0;
@@ -163,7 +161,6 @@ document.addEventListener("turbolinks:load", function() {
   });
 
   $(".modal-trigger").on("click",function(){
-    console.log("played")
     var taskList = document.querySelectorAll(".edit-finished-task")
     var taskNames = []
     taskList.forEach(function(el){
