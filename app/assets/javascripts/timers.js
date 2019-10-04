@@ -217,4 +217,10 @@ document.addEventListener("turbolinks:load", function() {
       });
     })
   })
+
+  $(".footer").on('click',function(e){
+    e.preventDefault();
+    console.log("OK")
+  });
+
 });
