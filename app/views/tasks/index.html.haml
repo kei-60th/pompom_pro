@@ -41,7 +41,7 @@
     .form
       = form_for @post do |f|
         .modal-content
-          %h4 投稿画面
+          %h4 投稿内容
           #endtaskList
           #totalTime
           = f.text_area :body, class: "input-box__text", placeholder: "type a message"
@@ -53,10 +53,10 @@
   .timer-controls
     #timer 00:00
     .controls
-      %button#set.btn Set
-      %button#sec.btn Sec
-      %button#reset.btn reset
-      %button#start.btn start
+      %button#set.btn.deep-purple.darken-3 Set
+      %button#sec.btn.deep-purple.darken-3 Sec
+      %button#reset.btn.deep-purple.darken-3 reset
+      %button#start.btn.deep-purple.darken-3 start
   .selector
     %select#min.pomodoro-minutes{:name => "minutes"}
       %option{:value => "1"} 1分
