@@ -2,8 +2,13 @@ class TasksController < ApplicationController
 
   def index
     @task = Task.new
-    @tasks = Task.where("is_done != 1")
-    @endtasks = Task.where("is_done = 1")
+    if user_signed_in?
+      @tasks = Task.where("is_done != 1 AND user_id = current_user.id")
+      @endtasks = Task.where("is_done = 1 AND user_id = current_user.id")
+    else
+      @tasks = Task.where("is_done != 1 AND user_id = 1")
+      @endtasks = Task.where("is_done = 1 AND user_id = 1")
+    end
     @post = Post.new
     @posts = Post.all.order("id DESC")
   end
