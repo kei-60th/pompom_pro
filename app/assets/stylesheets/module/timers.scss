@@ -7,7 +7,7 @@
 }
 
 .input-box__text{
-  height: 100px;
+  height: calc(70% - 56px);
 }
 
 
@@ -26,4 +26,8 @@
 .create-task{
   margin-top:10px;
   margin-left:10px;
+}
+
+.btn{
+  font-family: 'Hiragino Mincho Pro'
 }
