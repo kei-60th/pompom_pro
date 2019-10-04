@@ -143,7 +143,7 @@ document.addEventListener("turbolinks:load", function() {
     var html = `
     <div class='row'>
       <div class='col s12 m6'>
-        <div class='card blue-grey darken-1'>
+        <div class='card pink darken-3'>
           <div class='card-content white-text'>
             <span class='card-title'>${post.year} 年 ${post.month} 月 ${post.day} 日 の積み上げ</span>
             <p>${timeText}</p>
@@ -164,7 +164,7 @@ document.addEventListener("turbolinks:load", function() {
 
   $(".modal-trigger").on("click",function(){
     console.log("played")
-    var taskList = document.querySelectorAll(".kakikukeko")
+    var taskList = document.querySelectorAll(".edit-finished-task")
     var taskNames = []
     taskList.forEach(function(el){
       taskNames.push($(el).val())
@@ -185,7 +185,7 @@ document.addEventListener("turbolinks:load", function() {
   });
   $('#new_post').on('submit',function(e){
     e.preventDefault();
-    var taskList = document.querySelectorAll(".kakikukeko")
+    var taskList = document.querySelectorAll(".edit-finished-task")
     var textContent = document.getElementById ('post_body'); 
     $.ajax({
       url: "/posts",

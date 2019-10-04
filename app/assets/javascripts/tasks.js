@@ -9,7 +9,7 @@ document.addEventListener("turbolinks:load", function() {
                     <li class='collection-item' id='row_task_1'>
                       <input id='task_1' type='checkbox'>
                       <label for='task_1'>
-                        <input type="submit" name="test" value=${task.name} class="aiueo serch-${task.id}" data-disable-with=${task.name} data-task-id=${task.id} />
+                        <input type="submit" name="test" value=${task.name} class="edit-task serch-${task.id}" data-disable-with=${task.name} data-task-id=${task.id} />
                       </label>
                       <label class='delete' for='task_1'>
                         <input type="submit" name="test" value="delete" class="test" data-disable-with="delete" data-task-id=${task.id} />
@@ -52,7 +52,7 @@ document.addEventListener("turbolinks:load", function() {
     })
   });
 
-  $(document).on("click", ".aiueo", function (e) {
+  $(document).on("click", ".edit-task", function (e) {
     e.preventDefault();
     var taskId=$(this).data("taskId");
     var test=$(this).val();
@@ -70,7 +70,7 @@ document.addEventListener("turbolinks:load", function() {
       if (task.isDone){
         $("#finished-tasks").append(html);
         var element = document.getElementsByClassName(`serch-${task.id}`)
-        $(element).addClass("kakikukeko")
+        $(element).addClass("edit-finished-task")
         var parent = document.querySelector("#finished-tasks").lastChild
         $(parent).css({
           'left': '-200px'
@@ -82,7 +82,7 @@ document.addEventListener("turbolinks:load", function() {
       else {
         $("#unfinished-tasks").append(html);
         var element = document.getElementsByClassName(`serch-${task.id}`)
-        $(element).removeClass("kakikukeko")
+        $(element).removeClass("edit-finished-task")
         var parent = document.querySelector("#unfinished-tasks").lastChild
         $(parent).css({
           'left': '-200px'
