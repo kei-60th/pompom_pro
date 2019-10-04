@@ -150,10 +150,6 @@ document.addEventListener("turbolinks:load", function() {
             <p>完了したタスク:${array}</p>
             <p>${post.body}</p>
           </div>
-          <div class='card-action'>
-            <a href="#">編集</a>
-            <a href="#">削除</a>
-          </div>
         </div>
       </div>
     </div>
