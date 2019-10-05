@@ -1,9 +1,4 @@
 class PostsController < ApplicationController
-
-  def index
-    @posts = Post.all.order("id DESC")
-  end
-
   def create
     @post = Post.new(post_params)
     @post.save
@@ -18,13 +13,17 @@ class PostsController < ApplicationController
     end
   end
 
-
-
-
   private
 
   def post_params
-    params.permit(:body, :time)
+    if user_signed_in?
+      current_id = current_user.id
+    else
+      current_id = 1
+    end
+    params.permit(:body, :time).merge(
+      user_id: current_id
+    )
   end
 
 

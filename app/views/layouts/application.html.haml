@@ -12,7 +12,8 @@
     %div
       %nav
         .nav-wrapper.container
-          .brand-logo.left Todo Application
+          .brand-logo.left 
+            = link_to "Todo Application", root_path, method: :get
           %ul.right
             %li
               %button{type: "button",class: "nav-button task-page"}
@@ -24,3 +25,11 @@
               %button{type: "button",class: "nav-button mypage"}
                 Mypage
     = yield
+
+
+.footer
+  - if user_signed_in?
+    = link_to "Log out", destroy_user_session_path, method: :delete
+  - else
+    = link_to "Log in", new_user_session_path, class: 'post'
+    = link_to "Sign up", new_user_registration_path, class: 'post'

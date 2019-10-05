@@ -33,7 +33,7 @@ document.addEventListener("turbolinks:load", function() {
       s = ('0' + s).slice(-2);
       ms = ('00' + ms).slice(-3);
       timer.textContent = m + ':' + s;
-
+      document.title = m + ':' + s;
     }
 
 
@@ -42,14 +42,12 @@ document.addEventListener("turbolinks:load", function() {
       timerId = setTimeout(function(){
         timeLeft = timeToCountDown - (Date.now()- startTime);
         timeCount = Date.now()- startTime;
-        //console.log(timeLeft);
         if (timeLeft < 0 && isRunning === true){
           isRunning = false;
           start.textContent= 'Start';
           clearTimeout(timerId);
           Push.create('終了だよ!');
           timeSum += Math.round(timeCount / 60000);
-          console.log(timeSum);
           timeCount = 0;
           timeLeft = 0;
           timeToCountDown = 0;
@@ -143,16 +141,12 @@ document.addEventListener("turbolinks:load", function() {
     var html = `
     <div class='row'>
       <div class='col s12 m6'>
-        <div class='card blue-grey darken-1'>
+        <div class='card pink darken-3'>
           <div class='card-content white-text'>
             <span class='card-title'>${post.year} 年 ${post.month} 月 ${post.day} 日 の積み上げ</span>
             <p>${timeText}</p>
             <p>完了したタスク:${array}</p>
             <p>${post.body}</p>
-          </div>
-          <div class='card-action'>
-            <a href="#">編集</a>
-            <a href="#">削除</a>
           </div>
         </div>
       </div>
@@ -167,8 +161,7 @@ document.addEventListener("turbolinks:load", function() {
   });
 
   $(".modal-trigger").on("click",function(){
-    console.log("played")
-    var taskList = document.querySelectorAll(".kakikukeko")
+    var taskList = document.querySelectorAll(".edit-finished-task")
     var taskNames = []
     taskList.forEach(function(el){
       taskNames.push($(el).val())
@@ -189,7 +182,7 @@ document.addEventListener("turbolinks:load", function() {
   });
   $('#new_post').on('submit',function(e){
     e.preventDefault();
-    var taskList = document.querySelectorAll(".kakikukeko")
+    var taskList = document.querySelectorAll(".edit-finished-task")
     var textContent = document.getElementById ('post_body'); 
     $.ajax({
       url: "/posts",
@@ -224,4 +217,9 @@ document.addEventListener("turbolinks:load", function() {
       });
     })
   })
+
+  $(".footer").on('click',function(e){
+    e.stopPropagation();  
+  });
+
 });

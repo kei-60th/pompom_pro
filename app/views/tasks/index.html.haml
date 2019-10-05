@@ -21,7 +21,7 @@
           %li#row_task_1.collection-item
             %input#task_1{:type => "checkbox"}/
             %label{:for => "task_1"} 
-              = f.submit task.name,class:"aiueo serch-#{task.id}",name:"test",disabled:false,"data-task-id": task.id
+              = f.submit task.name,class:"edit-task serch-#{task.id}",name:"test",disabled:false,"data-task-id": task.id
             %label.delete{:for => "task_1"} 
               = f.submit "delete", class:"test",name:"test","data-task-id": task.id
   #finished-tasks
@@ -33,7 +33,7 @@
           %li#row_task_1.collection-item
             %input#task_1{:type => "checkbox"}/
             %label{:for => "task_1"} 
-              = f.submit etask.name,class:"aiueo serch-#{etask.id} kakikukeko",name:"test",disabled:false,"data-task-id": etask.id
+              = f.submit etask.name,class:"edit-task serch-#{etask.id} edit-finished-task",name:"test",disabled:false,"data-task-id": etask.id
             %label.delete{:for => "task_1"} 
               = f.submit "delete", class:"test",name:"test","data-task-id": etask.id
   %a.waves-effect.waves-light.btn.orange.darken-4.modal-trigger{:href => "#modal1"} 投稿する
@@ -41,22 +41,22 @@
     .form
       = form_for @post do |f|
         .modal-content
-          %h4 投稿画面
+          %h4 投稿内容
           #endtaskList
           #totalTime
           = f.text_area :body, class: "input-box__text", placeholder: "type a message"
         .modal-footer
-          = f.submit "投稿する", class: "btn modal-action modal-close"
+          = f.submit "投稿する", class: "btn modal-action modal-close orange darken-3"
 
 
 #timer-function.hidden
   .timer-controls
     #timer 00:00
     .controls
-      %button#set.btn Set
-      %button#sec.btn Sec
-      %button#reset.btn reset
-      %button#start.btn start
+      %button#set.btn.deep-purple.darken-3 Set
+      %button#sec.btn.deep-purple.darken-3 Sec
+      %button#reset.btn.deep-purple.darken-3 reset
+      %button#start.btn.deep-purple.darken-3 start
   .selector
     %select#min.pomodoro-minutes{:name => "minutes"}
       %option{:value => "1"} 1分
@@ -75,3 +75,7 @@
   = render partial: "post", locals: { posts: @posts }
 
 
+= javascript_include_tag 'cable.js'
+= javascript_include_tag 'spa.js'
+= javascript_include_tag 'tasks.js'
+= javascript_include_tag 'timers.js'
