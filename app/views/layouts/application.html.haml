@@ -12,7 +12,8 @@
     %div
       %nav
         .nav-wrapper.container
-          .brand-logo.left Todo Application
+          .brand-logo.left 
+            = link_to "Todo Application", root_path, method: :get
           %ul.right
             %li
               %button{type: "button",class: "nav-button task-page"}
