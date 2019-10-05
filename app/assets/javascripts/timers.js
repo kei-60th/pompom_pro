@@ -219,7 +219,7 @@ document.addEventListener("turbolinks:load", function() {
   })
 
   $(".footer").on('click',function(e){
-    e.preventDefault();
+    e.stopPropagation();  
     console.log("OK")
   });
 
