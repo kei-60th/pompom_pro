@@ -220,7 +220,6 @@ document.addEventListener("turbolinks:load", function() {
 
   $(".footer").on('click',function(e){
     e.stopPropagation();  
-    console.log("OK")
   });
 
 });
