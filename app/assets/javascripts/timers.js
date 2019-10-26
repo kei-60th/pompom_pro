@@ -9,6 +9,7 @@ document.addEventListener("turbolinks:load", function() {
     var start = document.getElementById('start');
     var timerId;
     var isRunning = false;
+    var isFirst = true;
     var result;
     var totalTimeContent;
     var ctx = document.getElementById("myChart");
@@ -135,11 +136,12 @@ document.addEventListener("turbolinks:load", function() {
               "#FFFFFF",
               "#1de9b6"
           ],
-          data: [50,50]
+          data: [100,0]
       }]
     },
     options: {
       animation: false,
+      maintainAspectRatio: false,
       title: {
         display: true,
         text: 'timer',
