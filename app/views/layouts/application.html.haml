@@ -8,6 +8,7 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload' 
     = javascript_include_tag('https://cdnjs.cloudflare.com/ajax/libs/push.js/1.0.7/push.min.js')
+    = javascript_include_tag('https://cdn.jsdelivr.net/npm/chart.js@2.8.0')
   %body
     %div
       %nav
@@ -25,8 +26,6 @@
               %button{type: "button",class: "nav-button mypage"}
                 Mypage
     = yield
-
-
 .footer
   - if user_signed_in?
     = link_to "Log out", destroy_user_session_path, method: :delete

@@ -75,7 +75,12 @@
   = render partial: "post", locals: { posts: @posts }
 
 
+.chart-container
+  %canvas#myChart{height:"100",width:"400"}
+
+
 = javascript_include_tag 'cable.js'
 = javascript_include_tag 'spa.js'
 = javascript_include_tag 'tasks.js'
 = javascript_include_tag 'timers.js'
+= javascript_include_tag 'mychart.js'

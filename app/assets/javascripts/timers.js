@@ -11,16 +11,19 @@ document.addEventListener("turbolinks:load", function() {
     var isRunning = false;
     var result;
     var totalTimeContent;
+    var ctx = document.getElementById("myChart");
     var tmp = document.getElementById('create-task-function'),classList1 = tmp.classList;
     var tmp = document.getElementById('task-list-function'),classList2 = tmp.classList;
     var tmp = document.getElementById('timer-function'),classList3 = tmp.classList;
     var tmp = document.getElementById('mypage-function'),classList4 = tmp.classList;
 
 
+    //タイマー機能
 
     var startTime;
     var timeLeft;
     var timeCount;
+    var progress
     var timeSum = 0;
     var timeToCountDown = 0;
 
@@ -40,7 +43,11 @@ document.addEventListener("turbolinks:load", function() {
 
     function countDown(){
       timerId = setTimeout(function(){
-        timeLeft = timeToCountDown - (Date.now()- startTime);
+        progress = (Date.now()- startTime)
+        timeLeft = timeToCountDown - progress;
+        chart.data.datasets[0].data[0] = (timeLeft/(timeLeft+progress))*100
+        chart.data.datasets[0].data[1] = (progress/(timeLeft+progress))*100
+        chart.update();
         timeCount = Date.now()- startTime;
         if (timeLeft < 0 && isRunning === true){
           isRunning = false;
@@ -118,6 +125,57 @@ document.addEventListener("turbolinks:load", function() {
 
 
 
+//chart.js
+  var chart = new Chart(ctx, {
+    type: 'pie',
+    data: {
+      labels: ["残り時間", "経過時間"],
+      datasets: [{
+          backgroundColor: [
+              "#FFFFFF",
+              "#1de9b6"
+          ],
+          data: [50,50]
+      }]
+    },
+    options: {
+      animation: false,
+      title: {
+        display: true,
+        text: 'timer',
+      },
+      legend: {
+        display: false
+      },
+      tooltips: {
+        enabled: false
+      },
+    }
+  });
+
+
+
+//oridginal
+// var ctx = document.getElementById("myChart");
+// var myPieChart = new Chart(ctx, {
+//   type: 'pie',
+//   data: {
+//     labels: ["残り時間", "経過時間"],
+//     datasets: [{
+//         backgroundColor: [
+//             "#1de9b6",
+//             "#FFFFFF"
+//         ],
+//         data: [50,50]
+//     }]
+//   },
+//   options: {
+//     title: {
+//       display: true,
+//       text: 'timer',
+//     }
+//   }
+// });
 
 
 
@@ -125,6 +183,22 @@ document.addEventListener("turbolinks:load", function() {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//投稿機能
 
   function buildPost(post,array){
     if (post.time >= 60){
