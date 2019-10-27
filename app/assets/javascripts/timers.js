@@ -59,6 +59,9 @@ document.addEventListener("turbolinks:load", function() {
           timeLeft = 0;
           timeToCountDown = 0;
           updateTimer(timeLeft);
+          $('#myChart').animate({
+            'bottom': '-130px'
+          },2500);
           return;
         }
         updateTimer(timeLeft);
@@ -71,6 +74,9 @@ document.addEventListener("turbolinks:load", function() {
         return;
       }
       if(isRunning === false){
+        $('#myChart').animate({
+          'bottom': '70px'
+        },500);
         isRunning = true;
         start.textContent = "Stop";
         startTime = Date.now();
