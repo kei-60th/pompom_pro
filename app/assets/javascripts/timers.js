@@ -46,7 +46,6 @@ document.addEventListener("turbolinks:load", function() {
       timerId = setTimeout(function(){
         timeCount += Date.now()- lastTime;
         timeLeft = timeToCountDown - timeCount;
-        console.log(timeToCountDown)
         chart.data.datasets[0].data[0] = (timeLeft/(timeLeft+timeCount))*100
         chart.data.datasets[0].data[1] = (timeCount/(timeLeft+timeCount))*100
         chart.update();
