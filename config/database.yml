@@ -50,5 +50,6 @@ test:
 production:
   <<: *default
   database: pompom_pro_production
-  username: pompom_pro
+  username: root
   password: <%= ENV['POMPOM_PRO_DATABASE_PASSWORD'] %>
+  socket: /var/lib/mysql/mysql.sock
