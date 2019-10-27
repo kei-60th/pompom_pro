@@ -24,7 +24,6 @@ document.addEventListener("turbolinks:load", function() {
     var startTime;
     var timeLeft;
     var timeCount;
-    var progress
     var timeSum = 0;
     var timeToCountDown = 0;
 
@@ -44,12 +43,11 @@ document.addEventListener("turbolinks:load", function() {
 
     function countDown(){
       timerId = setTimeout(function(){
-        progress = (Date.now()- startTime)
-        timeLeft = timeToCountDown - progress;
-        chart.data.datasets[0].data[0] = (timeLeft/(timeLeft+progress))*100
-        chart.data.datasets[0].data[1] = (progress/(timeLeft+progress))*100
-        chart.update();
         timeCount = Date.now()- startTime;
+        timeLeft = timeToCountDown - timeCount;
+        chart.data.datasets[0].data[0] = (timeLeft/(timeLeft+timeCount))*100
+        chart.data.datasets[0].data[1] = (timeCount/(timeLeft+timeCount))*100
+        chart.update();
         if (timeLeft < 0 && isRunning === true){
           isRunning = false;
           start.textContent= 'Start';
