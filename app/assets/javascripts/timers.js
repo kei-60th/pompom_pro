@@ -65,7 +65,6 @@ document.addEventListener("turbolinks:load", function() {
         lastTime = Date.now()
         countDown();
       },10);
-      //setTimeout:次の処理を10ミリ秒後に実行しなさい
     }
     $("#start").on("click",function(){
       if (timeToCountDown === 0){
@@ -154,43 +153,6 @@ document.addEventListener("turbolinks:load", function() {
       },
     }
   });
-
-
-
-//oridginal
-// var ctx = document.getElementById("myChart");
-// var myPieChart = new Chart(ctx, {
-//   type: 'pie',
-//   data: {
-//     labels: ["残り時間", "経過時間"],
-//     datasets: [{
-//         backgroundColor: [
-//             "#1de9b6",
-//             "#FFFFFF"
-//         ],
-//         data: [50,50]
-//     }]
-//   },
-//   options: {
-//     title: {
-//       display: true,
-//       text: 'timer',
-//     }
-//   }
-// });
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
