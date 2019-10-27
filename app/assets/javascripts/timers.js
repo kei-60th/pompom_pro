@@ -22,8 +22,9 @@ document.addEventListener("turbolinks:load", function() {
     //タイマー機能
 
     var startTime;
+    var lastTime
     var timeLeft;
-    var timeCount;
+    var timeCount = 0;
     var timeSum = 0;
     var timeToCountDown = 0;
 
@@ -43,7 +44,7 @@ document.addEventListener("turbolinks:load", function() {
 
     function countDown(){
       timerId = setTimeout(function(){
-        timeCount = Date.now()- startTime;
+        timeCount += Date.now()- lastTime;
         console.log(timeCount)
         timeLeft = timeToCountDown - timeCount;
         chart.data.datasets[0].data[0] = (timeLeft/(timeLeft+timeCount))*100
@@ -62,6 +63,7 @@ document.addEventListener("turbolinks:load", function() {
           return;
         }
         updateTimer(timeLeft);
+        lastTime =Date.now()
         countDown();
       },10);
       //setTimeout:次の処理を10ミリ秒後に実行しなさい
@@ -74,6 +76,7 @@ document.addEventListener("turbolinks:load", function() {
         isRunning = true;
         start.textContent = "Stop";
         startTime = Date.now();
+        lastTime = startTime
         countDown();
       }else{
         isRunning = false;
