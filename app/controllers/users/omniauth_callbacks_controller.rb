@@ -34,7 +34,10 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def callback_from(provider)
     @sns = User.find_for_oauth(request.env['omniauth.auth'])
-    @sns.update(user_id: current_user.id)
+    unless SnsCredential.find_by(user_id: current_user.id)
+      @sns.user_id = current_user.id
+      @sns.save
+    end
     redirect_to root_path
   end
 

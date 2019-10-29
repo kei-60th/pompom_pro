@@ -9,7 +9,7 @@ class User < ApplicationRecord
   def self.find_for_oauth(auth)
     uid = auth.uid
     provider = auth.provider
-    sns = SnsCredential.create(
+    sns = SnsCredential.new(
       uid: uid,
       provider: provider
     )
