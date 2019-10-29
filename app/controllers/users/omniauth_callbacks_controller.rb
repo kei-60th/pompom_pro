@@ -29,14 +29,12 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   # end
 
   def twitter
-    callback_for(:twitter) #コールバック
+    callback_from :twitter
   end
 
-  def callback_for(provider)
-    info = User.find_oauth(request.env["omniauth.auth"]) #usersモデルのメソッド
-    @user = info[:user]
-    sns_id = info[:sns_id]
-    binding.pry
+  def callback_from(provider)
+    @sns = User.find_for_oauth(request.env['omniauth.auth'])
+    @sns.update(user_id: current_user.id)
     redirect_to root_path
   end
 
