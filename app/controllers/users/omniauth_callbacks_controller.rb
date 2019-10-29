@@ -27,4 +27,23 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   # def after_omniauth_failure_path_for(scope)
   #   super(scope)
   # end
+
+  def twitter
+    callback_for(:twitter) #コールバック
+  end
+
+  def callback_for(provider)
+    info = User.find_oauth(request.env["omniauth.auth"]) #usersモデルのメソッド
+    @user = info[:user]
+    sns_id = info[:sns_id]
+    binding.pry
+    redirect_to root_path
+  end
+
+
+  def failure
+    redirect_to root_path and return
+  end
+
+
 end
