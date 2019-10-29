@@ -264,6 +264,21 @@ document.addEventListener("turbolinks:load", function() {
     })
   })
 
+  $('.tweet').on('click',function(e){
+    e.preventDefault();
+    var taskList = document.querySelectorAll(".edit-finished-task")
+    var textContent = document.getElementById ('post_body'); 
+    $.ajax({
+      url: "/tweet",
+      type: "POST",
+      dataType: 'json',
+      data: {
+        time:timeSum,
+        body:textContent.value
+      },
+    }) 
+  })
+
   $(".footer").on('click',function(e){
     e.stopPropagation();  
   });
