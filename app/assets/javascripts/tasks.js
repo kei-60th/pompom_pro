@@ -9,10 +9,10 @@ document.addEventListener("turbolinks:load", function() {
                     <li class='collection-item' id='row_task_1'>
                       <input id='task_1' type='checkbox'>
                       <label for='task_1'>
-                        <input type="submit" name="test" value=${task.name} class="edit-task serch-${task.id}" data-disable-with=${task.name} data-task-id=${task.id} />
+                        <input type="submit" name="deleteTask" value=${task.name} class="edit-task serch-${task.id}" data-disable-with=${task.name} data-task-id=${task.id} />
                       </label>
                       <label class='delete' for='task_1'>
-                        <input type="submit" name="test" value="delete" class="test" data-disable-with="delete" data-task-id=${task.id} />
+                        <input type="submit" name="deleteTask" value="delete" class="deleteTask" data-disable-with="delete" data-task-id=${task.id} />
                       </label>
                     </li>
                 </form></ul>`
@@ -55,12 +55,12 @@ document.addEventListener("turbolinks:load", function() {
   $(document).on("click", ".edit-task", function (e) {
     e.preventDefault();
     var taskId=$(this).data("taskId");
-    var test=$(this).val();
+    var deleteTask=$(this).val();
     $.ajax({
       url: `/tasks/${taskId}`,
       type: 'patch',
       dataType: 'json',
-      data: {test: test}
+      data: {deleteTask: deleteTask}
     })
     .done(function(task){
       var html = buildTask(task);
@@ -94,15 +94,15 @@ document.addEventListener("turbolinks:load", function() {
     })
   })
 
-  $(document).on("click", ".test", function (e) {
+  $(document).on("click", ".deleteTask", function (e) {
     e.preventDefault();
     var taskId=$(this).data("taskId");
-    var test=$(this).val();
+    var deleteTask=$(this).val();
     $.ajax({
       url: `/tasks/${taskId}`,
       type: 'patch',
       dataType: 'json',
-      data: {test: test}
+      data: {deleteTask: deleteTask}
     })
     .done(function(){
       var deleteChild = document.querySelector(`#edit_task_${taskId}`)

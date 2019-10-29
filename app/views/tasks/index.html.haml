@@ -21,9 +21,9 @@
           %li#row_task_1.collection-item
             %input#task_1{:type => "checkbox"}/
             %label{:for => "task_1"} 
-              = f.submit task.name,class:"edit-task serch-#{task.id}",name:"test",disabled:false,"data-task-id": task.id
+              = f.submit task.name,class:"edit-task serch-#{task.id}",name:"deleteTask",disabled:false,"data-task-id": task.id
             %label.delete{:for => "task_1"} 
-              = f.submit "delete", class:"test",name:"test","data-task-id": task.id
+              = f.submit "delete", class:"deleteTask",name:"deleteTask","data-task-id": task.id
   #finished-tasks
     .finished-tasks-box
       .tasks-logo 完了したタスク
@@ -33,9 +33,9 @@
           %li#row_task_1.collection-item
             %input#task_1{:type => "checkbox"}/
             %label{:for => "task_1"} 
-              = f.submit etask.name,class:"edit-task serch-#{etask.id} edit-finished-task",name:"test",disabled:false,"data-task-id": etask.id
+              = f.submit etask.name,class:"edit-task serch-#{etask.id} edit-finished-task",name:"deleteTask",disabled:false,"data-task-id": etask.id
             %label.delete{:for => "task_1"} 
-              = f.submit "delete", class:"test",name:"test","data-task-id": etask.id
+              = f.submit "delete", class:"deleteTask",name:"deleteTask","data-task-id": etask.id
   %a.waves-effect.waves-light.btn.orange.darken-4.modal-trigger{:href => "#modal1"} 投稿する
   #modal1.modal.modal-fixed-footer
     .form

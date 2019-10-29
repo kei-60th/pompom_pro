@@ -36,7 +36,7 @@ class TasksController < ApplicationController
     else
       @task.is_done = 1
     end
-    unless params.require(:test)=="delete"
+    unless params.require(:deleteTask)=="delete"
       @task.update(task_params)
     else
       @task.delete
