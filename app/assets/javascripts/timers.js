@@ -1,6 +1,5 @@
 document.addEventListener("turbolinks:load", function() {
 
-  console.log("debug")
   Push.Permission.request();
 
     'use strict';
