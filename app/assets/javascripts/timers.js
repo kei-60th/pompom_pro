@@ -1,5 +1,8 @@
 document.addEventListener("turbolinks:load", function() {
 
+  console.log("debug")
+  Push.Permission.request();
+
     'use strict';
 
     var timer = document.getElementById('timer');
@@ -122,7 +125,7 @@ document.addEventListener("turbolinks:load", function() {
       timeCount = 0;
       updateTimer(timeToCountDown);
     });
-    Push.Permission.request();
+    
 
   $(document).ready(function(){
     $('select').formSelect();
