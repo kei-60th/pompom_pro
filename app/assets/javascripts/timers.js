@@ -264,6 +264,31 @@ document.addEventListener("turbolinks:load", function() {
     })
   })
 
+  $('.tweet').on('click',function(e){
+    e.preventDefault();
+    var taskList = document.querySelectorAll(".edit-finished-task")
+    var textContent = document.getElementById ('post_body'); 
+    $.ajax({
+      url: "/tweet",
+      type: "POST",
+      dataType: 'json',
+      data: {
+        time:timeSum,
+        body:textContent.value
+      },
+    }) 
+    .done(function(){
+      $(".tweet").prop("disabled", true),
+      $(".tweet").addClass("grey")
+      $(".tweet-arert").empty()
+      $(".tweet-arert").append(`<div class="tweet-success">tweetしました。</div>`)
+    })
+    .fail(function(){
+      $(".tweet-arert").empty()
+      $(".tweet-arert").append(`<div class="tweet-failed">投稿文字数が上限を超えています。</div>`)
+    })
+  })
+
   $(".footer").on('click',function(e){
     e.stopPropagation();  
   });

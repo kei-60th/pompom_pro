@@ -16,6 +16,7 @@
 
  /* Materialize */
  @import "./reset";
+ @import "font-awesome";
  @import "materialize/components/color-variables";
  $primary-color: color("teal", "accent-3") !default;
  $secondary-color: color("cyan", "base") !default;
@@ -23,6 +24,7 @@
  @import "material_icons";
  @import "./module/tasks";
  @import "./module/timers";
+ @import "./module/modal";
  @import "./module/mypage";
  @import "./module/user";
  @import "spa";

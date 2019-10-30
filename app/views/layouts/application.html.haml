@@ -28,9 +28,15 @@
     = yield
 .footer
   - if user_signed_in?
-    = link_to "Log out", destroy_user_session_path, method: :delete
+    .footer__signin-contents
+      = link_to "Log out", destroy_user_session_path, method: :delete
+      - unless current_user.sns_credentials.present?
+        = link_to 'Twitter認証', user_twitter_omniauth_authorize_path, class: 'authentication'
+      - else
+        .authenticated Twitter認証済み
     .status status: ログイン中
   - else
-    = link_to "Log in", new_user_session_path, class: 'post'
-    = link_to "Sign up", new_user_registration_path, class: 'post'
+    .footer__not-signin-contents
+      = link_to "Log in", new_user_session_path, class: 'post'
+      = link_to "Sign up", new_user_registration_path, class: 'post'
     .status status: 未ログイン(サンプルユーザ)
