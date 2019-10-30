@@ -18,4 +18,5 @@
     = f.password_field :password_confirmation, autocomplete: "new-password"
   .actions
     = f.submit "Sign up",class:"btn"
+    = link_to 'Sign up for twitter', user_twitter_omniauth_authorize_path, class: 'btn'
 = render "devise/shared/links"

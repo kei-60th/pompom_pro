@@ -10,4 +10,5 @@
     = f.password_field :password, autocomplete: "current-password"
   .actions
     = f.submit "Log in",class:"btn"
+    = link_to 'Log in for twitter', user_twitter_omniauth_authorize_path, class: 'btn'
 = render "devise/shared/links"
