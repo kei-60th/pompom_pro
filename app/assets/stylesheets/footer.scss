@@ -1,4 +1,6 @@
 .footer{
+  display:flex;
+  justify-content: space-between;
   bottom:0;
   position: fixed;
   font-size:30px;
@@ -6,15 +8,30 @@
   height:70px;
   width:100%;
   padding:10px;
+  &__signin-contents{
+    display: flex;
+  }
 }
 
 a{
   color:white;
-  padding:10px;
+  padding:0 10px;
 }
 
 .status{
   color:white;
   float: right;
   font-size:20px;
+}
+
+.authentication{
+  color: #81d4fa;
+  left: 20px;
+}
+
+.authenticated{
+  color: #fff176;
+  left: 20px;
+  display:inline-block;
+  margin-left:10px;
 }
