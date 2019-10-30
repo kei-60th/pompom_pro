@@ -77,8 +77,8 @@ gem 'pry-rails'
 gem 'jquery-rails'
 gem 'devise'
 gem 'chart-js-rails'
-gem 'twitter'
-gem 'omniauth'
-gem 'omniauth-twitter'
-gem 'dotenv-rails'
-gem "font-awesome-rails"
+# gem 'twitter'
+# gem 'omniauth'
+# gem 'omniauth-twitter'
+# gem 'dotenv-rails'
+# gem "font-awesome-rails"
