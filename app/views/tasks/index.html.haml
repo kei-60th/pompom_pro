@@ -46,7 +46,11 @@
           #totalTime
           = f.text_area :body, class: "input-box__text", placeholder: "type a message"
         .modal-footer
-          %button{type: "button",class:"btn tweet"} Tweet
+          .tweet-function
+            %button{type: "button",class:"btn tweet"} Tweet
+            .tweet-arert
+              .test
+                テスト
           = f.submit "投稿する", class: "btn modal-action modal-close orange darken-3"
 
 

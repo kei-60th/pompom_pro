@@ -277,6 +277,16 @@ document.addEventListener("turbolinks:load", function() {
         body:textContent.value
       },
     }) 
+    .done(function(){
+      $(".tweet").prop("disabled", true),
+      $(".tweet").addClass("grey")
+      $(".tweet-arert").empty()
+      $(".tweet-arert").append(`<div class="tweet-success">tweetしました。</div>`)
+    })
+    .fail(function(){
+      $(".tweet-arert").empty()
+      $(".tweet-arert").append(`<div class="tweet-failed">投稿文字数が上限を超えています。</div>`)
+    })
   })
 
   $(".footer").on('click',function(e){
