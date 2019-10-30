@@ -48,7 +48,9 @@
         .modal-footer
           -if (current_user && current_user.sns_credentials.present?)
             .tweet-function
-              %button{type: "button",class:"btn tweet"} Tweet
+              %button{type: "button",class:"btn tweet"}
+                = fa_icon 'twitter'
+                = "Tweet"
               .tweet-arert
           = f.submit "投稿する", class: "btn modal-action modal-close orange darken-3"
 
