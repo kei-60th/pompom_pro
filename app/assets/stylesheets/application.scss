@@ -16,6 +16,7 @@
 
  /* Materialize */
  @import "./reset";
+ @import "font-awesome";
  @import "materialize/components/color-variables";
  $primary-color: color("teal", "accent-3") !default;
  $secondary-color: color("cyan", "base") !default;

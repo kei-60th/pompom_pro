@@ -81,3 +81,4 @@ gem 'twitter'
 gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'dotenv-rails'
+gem "font-awesome-rails"
