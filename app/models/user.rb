@@ -9,9 +9,14 @@ class User < ApplicationRecord
   def self.find_for_oauth(auth)
     uid = auth.uid
     provider = auth.provider
+    utoken = auth['credentials']['token']
+    usecret = auth['credentials']['secret']
+
     sns = SnsCredential.new(
       uid: uid,
-      provider: provider
+      provider: provider,
+      utoken: utoken,
+      usecret: usecret
     )
   end
 end

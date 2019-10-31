@@ -19,8 +19,8 @@ class TweetController < ApplicationController
     @tweet = Twitter::REST::Client.new do |config|
       config.consumer_key        = Rails.application.credentials.twitter[:TWITTER_KEY]
       config.consumer_secret     = Rails.application.credentials.twitter[:TWITTER_SECRET]
-      config.access_token        = Rails.application.credentials.twitter[:ACCESS_TOKEN]
-      config.access_token_secret = Rails.application.credentials.twitter[:ACCESS_TOKEN_SECRET]
+      config.access_token        = current_user.sns_credentials[0].utoken
+      config.access_token_secret = current_user.sns_credentials[0].usecret
     end
     @tweet.update("今日の積み上げ\n完了したタスク:#{@taskname.join(',')}\n学習時間:#{tweet_params[:time]}\n#{tweet_params[:body]}\n#TwitterAPIから投稿 #pompom_pro")
   end
