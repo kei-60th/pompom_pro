@@ -2,7 +2,11 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.save
-    @tasks = Task.where("is_done != false").order('updated_at DESC')
+    if current_user
+      @tasks = Task.where(is_done: true,user_id:current_user.id).order('updated_at DESC')
+    else
+      @tasks = Task.where(is_done: true,user_id:1).order('updated_at DESC')
+    end
     @tasks.each do |task|
       @endtask = Endtask.create(post_id: @post.id,name: task.name)
       task.delete
