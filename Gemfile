@@ -77,7 +77,7 @@ gem 'pry-rails'
 gem 'jquery-rails'
 gem 'devise'
 gem 'chart-js-rails'
-gem 'twitter'
+gem 'twitter', "< 6.0"
 gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'dotenv-rails'
