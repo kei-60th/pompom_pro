@@ -1,7 +1,11 @@
 class TweetController < ApplicationController
   def create
     @taskname = []
-    @tasks = Task.where("is_done != false").order('updated_at DESC')
+    if current_user
+      @tasks = Task.where(is_done: true,user_id:current_user.id).order('updated_at DESC')
+    else
+      @tasks = Task.where(is_done: true,user_id:1).order('updated_at DESC')
+    end
     @tasks.each do |task|
       @taskname.push(task.name)
     end
