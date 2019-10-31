@@ -254,6 +254,9 @@ document.addEventListener("turbolinks:load", function() {
       classList4.remove("hidden")
       $(".modal-close").prop("disabled", false);
       var html = buildPost(post,array);
+      if ($(".before-post").length){
+        $(".before-post").remove();
+      }
       $("#mypage-function").prepend(html)
       taskIds.forEach(function(el){
         var deleteChild =document.querySelector(`#edit_task_${el}`)
