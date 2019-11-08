@@ -1,24 +1,36 @@
-# README
+# pompom_pro
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## 概要
+ユーザーがやるべきタスクを投稿してもらい、タイマーでタスクの進捗を測っていただくためのアプリケーションです。
+また進捗や成果をマイページやTwitterに投稿することもできます。
 
-Things you may want to cover:
+## 製作背景
+私はプログラミングを勉強しているところだったため、より成果を挙げるためにタスク管理アプリやタイマーアプリケーションがほしいと考えていました。
+そこでToDo管理機能とタイマー管理機能を掛け合わせて1日の進捗を測れるアプリケーションを作成し、これを使うことで学習習慣の継続を測ろうと考えました。
+また、成果をアウトプットすることも勉強する人にとっては有意義であると思ったため、マイページやTwitterに投稿できるようにして自分や他のユーザー学習のモチベーションを高めようと考えました。
 
-* Ruby version
+## 機能
+* 新規登録・ログイン・ログアウト機能
+* Twitter認証機能
+* タスク作成・更新機能
+* タイマー計測機能
+* マイページ投稿機能
+* Twitter投稿機能
 
-* System dependencies
+## 今後実装したい機能
+* Twitterやマイページへの投稿形式の選択機能
+* タイマーの経過した時間の記録
+* 他ユーザーのマイページの閲覧機能
+* マイページのページネーション
+* マイページの編集・削除機能
 
-* Configuration
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## 使用技術
+* ruby/ruby on rails
+* jQuery
+* Materialize
+* MySQL
+* AWS
+* Push.js
+* Chart.js
+* TwitterAPI
