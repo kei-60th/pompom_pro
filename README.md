@@ -20,7 +20,9 @@
 
 ## プレビュー
 twitter投稿機能プレビュー  
-![twitter投稿機能プレビュー](https://user-images.githubusercontent.com/54617124/68561340-79939580-0488-11ea-9e40-90516a15edeb.gif)
+![twitter投稿機能プレビュー](https://user-images.githubusercontent.com/54617124/68561340-79939580-0488-11ea-9e40-90516a15edeb.gif)      
+タイマー機能プレビュー
+![タイマー機能プレビュー](https://user-images.githubusercontent.com/54617124/68562529-73ec7e80-048d-11ea-93fd-77211b7bcf7a.gif)
 
 ## 今後実装したい機能
 * 通知機能をChromeに対応
