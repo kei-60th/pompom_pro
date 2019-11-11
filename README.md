@@ -19,7 +19,7 @@
 * Twitter投稿機能
 
 ## プレビュー
-twitter投稿機能プレビュー
+twitter投稿機能プレビュー  
 ![twitter投稿機能プレビュー](https://user-images.githubusercontent.com/54617124/68561340-79939580-0488-11ea-9e40-90516a15edeb.gif)
 
 ## 今後実装したい機能
