@@ -22,12 +22,27 @@ class TweetController < ApplicationController
       config.access_token        = current_user.sns_credentials[0].utoken
       config.access_token_secret = current_user.sns_credentials[0].usecret
     end
-    @tweet.update("今日の積み上げ\n完了したタスク:#{@taskname.join(',')}\n学習時間:#{tweet_params[:time]}\n#{tweet_params[:body]}\n#TwitterAPIから投稿 #pompom_pro")
+    study_time
+    @tweet.update("#今日の積み上げ\n完了したタスク:#{@taskname.join(',')}\n学習時間:#{@study_time}\n#{tweet_params[:body]}\n#TwitterAPIから投稿 #pompom_pro")
   end
 
 
   def tweet_params
     params.permit(:body, :time)
+  end
+
+  def study_time
+    time = tweet_params[:time].to_i
+    if time >= 60
+      if time % 60 == 0
+        @study_time = "#{(time/ 60)}時間"
+      else
+        @study_time = "#{(time / 60).floor}時間#{(time % 60)}分"
+      end
+    else
+      @study_time = "#{(time % 60)}分"
+    end
+    
   end
 
 
