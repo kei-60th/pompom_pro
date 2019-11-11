@@ -1,5 +1,5 @@
 # pompom_pro
-
+URL:http://52.199.212.178
 ## 概要
 ユーザーがやるべきタスクを投稿してもらい、タイマーでタスクの進捗を測っていただくためのアプリケーションです。
 また進捗や成果をマイページやTwitterに投稿することもできます。
@@ -21,8 +21,12 @@
 ## プレビュー
 タスク投稿・更新機能プレビュー  
 ![タスク投稿・更新機能プレビュー](https://user-images.githubusercontent.com/54617124/68562935-24a74d80-048f-11ea-89ed-2d5b1a89e4e9.gif)  
+  
+***
 タイマー機能プレビュー  
 ![タイマー機能プレビュー](https://user-images.githubusercontent.com/54617124/68562529-73ec7e80-048d-11ea-93fd-77211b7bcf7a.gif)  
+  
+***
 twitter投稿機能プレビュー  
 ![twitter投稿機能プレビュー](https://user-images.githubusercontent.com/54617124/68561340-79939580-0488-11ea-9e40-90516a15edeb.gif)
 
