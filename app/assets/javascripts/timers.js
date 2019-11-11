@@ -27,7 +27,7 @@ document.addEventListener("turbolinks:load", function() {
     var lastTime
     var timeLeft;
     var timeCount = 0;
-    var timeSum = 510;
+    var timeSum = 0;
     var timeToCountDown = 0;
 
     function updateTimer(t){
