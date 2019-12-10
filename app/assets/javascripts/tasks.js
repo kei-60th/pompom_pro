@@ -48,7 +48,7 @@ document.addEventListener("turbolinks:load", function() {
       $('.form-control').val('')
     })
     .fail(function(){
-      alert('タスク名を入力してください');
+      alert('タスク名に記号を含めることはできません。');
     })
   });
 

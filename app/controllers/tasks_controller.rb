@@ -21,7 +21,7 @@ class TasksController < ApplicationController
   def create
     @task = Task.new(task_params)
     authenticity_token = params[:authenticity_token]
-    if @task.save
+    if @task.save!
       respond_to do |format|
         format.html{redirect_to root_path, notice: 'メッセージが送信されました'}
         format.json
